@@ -1,6 +1,15 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
+    :root {
+        --background: #ECF1F9;
+        --shape: #FFFFFF;
+        --blue: #566FFE;        
+        --gren: #36B37E;
+        --silver: #6F7D95;
+    }
+
+
    * {
        margin: 0;
        padding: 0;
@@ -16,6 +25,19 @@ export const GlobalStyle = createGlobalStyle`
            font-size: 87.5%
        }
    }
+
+   body {
+      background: var(--background);
+      -webkit-font-smoothing: antialiased;
+   }
+
+   body, input, button {
+        font-family: 'Circular Std', sans-serif;
+    } 
+
+   h1, h2, h3, h4, h5, h6, strong {
+      font-weight: 600;
+    }
 
    button {
        cursor: pointer;
