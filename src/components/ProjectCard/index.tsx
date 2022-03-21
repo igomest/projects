@@ -1,25 +1,24 @@
+import { ProjectCardProps } from "../../interfaces/propTypes"
 import { Budget, Container, Content, ImageContainer, Separator, Title } from "./styles"
 
 
-export const ProjectCard = () => {
+export const ProjectCard = ({project}: ProjectCardProps) => {
     return (
         <Container>
             <ImageContainer>
-                <img src="https://raroin.creabik.com/assets/img/items/item_1.png" alt="" />
+                <img src={project.imageUrl} alt="Imagem" />
             </ImageContainer>
 
                 <Title>
-                    <p>Project Name</p>
+                    <p>{project.name}</p>
                 </Title>
 
                 <Content>
-                    <p>
-                        t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                    </p>
+                    <p>{project.description}</p>
                 </Content>
 
                 <Budget>
-                    <p>Orçamento: R$200,000</p>
+                    <p>Orçamento: {project.budget}</p>
                 </Budget>
 
                 <Separator />
