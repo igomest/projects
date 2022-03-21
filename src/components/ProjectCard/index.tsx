@@ -1,29 +1,39 @@
 import { ProjectCardProps } from "../../interfaces/propTypes"
 import { Budget, Container, Content, ImageContainer, Separator, Title } from "./styles"
+import { Project } from "../ProjectPage/Project"
 
+export const ProjectCard = ({ project, onEdit }: ProjectCardProps) => {
 
-export const ProjectCard = ({project}: ProjectCardProps) => {
+    const handleEditClick = (projectBeingEdited: Project) => {
+        onEdit(projectBeingEdited)
+    }
+
     return (
         <Container>
             <ImageContainer>
                 <img src={project.imageUrl} alt="Imagem" />
             </ImageContainer>
 
-                <Title>
-                    <p>{project.name}</p>
-                </Title>
+            <Title>
+                <p>{project.name}</p>
+            </Title>
 
-                <Content>
-                    <p>{project.description}</p>
-                </Content>
+            <Content>
+                <p>{project.description}</p>
+            </Content>
 
-                <Budget>
-                    <p>Orçamento: {project.budget}</p>
-                </Budget>
+            <Budget>
+                <p>Orçamento: {project.budget}</p>
+            </Budget>
 
-                <Separator />
+            <Separator />
 
-                <button type="button">Edit</button>
+            <button
+                type="button"
+                onClick={() => handleEditClick(project)}
+            >
+                Edit
+            </button>
         </Container>
     )
 }
