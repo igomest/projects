@@ -1,13 +1,19 @@
-import { ButtonContainer, Container } from "./styles"
+import { ButtonContainer, Container, ValidationCard } from "./styles"
 import { ProjectFormProps } from "../../interfaces/propTypes"
 import { SyntheticEvent, useState } from "react"
 import { Project } from "../ProjectPage/Project"
 
 export const ProjectForm = ({ onCancel, onSave, project: initialProject }: ProjectFormProps) => {
     const [project, setProject] = useState(initialProject)
+    const [errors, setErrors] = useState({
+        name: '',
+        description: '',
+        budget: ''
+    })
 
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault()
+        if (!isValid()) return;
         onSave(project)
     }
 
@@ -29,8 +35,39 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
             updatedProject = new Project({ ...pr, ...change })
             return updatedProject
         })
+
+        setErrors(() => validate(updatedProject))
     }
 
+    const validate = (project: Project) => {
+        let errors = { name: '', description: '',  budget: ''}
+
+        if (project.name.length === 0) {
+            errors.name = 'Name is required.'
+        }
+
+        if (project.name.length > 0 && project.name.length < 3) {
+            errors.name = 'Name needs to be at last 3 characters.'
+        }
+
+        if (project.description.length === 0) {
+            errors.description = 'Description is required.'
+        }
+
+        if (project.budget === 0) {
+            errors.budget = 'Budget must be more than $0.'
+        }
+
+        return errors
+    }
+
+    const isValid = () => {
+        return (
+            errors.name.length === 0 &&
+            errors.description.length === 0 &&
+            errors.budget.length === 0
+        )
+    }
 
     return (
         <Container onSubmit={handleSubmit}>
@@ -42,6 +79,11 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
                 onChange={handleChange}
                 placeholder="Enter name"
             />
+            {errors.name.length > 0 && (
+                <ValidationCard>
+                    <p>{errors.name}</p>
+                </ValidationCard>
+            )}
 
             <label>Project Description</label>
             <textarea
@@ -50,6 +92,11 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
                 value={project.description}
                 onChange={handleChange}
             />
+             {errors.description.length > 0 && (
+                <ValidationCard>
+                    <p>{errors.description}</p>
+                </ValidationCard>
+            )}
 
             <label>Project Budget</label>
             <input
@@ -59,6 +106,11 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
                 value={project.budget}
                 onChange={handleChange}
             />
+             {errors.budget.length > 0 && (
+                <ValidationCard>
+                    <p>{errors.budget}</p>
+                </ValidationCard>
+            )}
 
             <label>Active?</label>
             <input
@@ -70,7 +122,7 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
             />
 
             <ButtonContainer>
-                <button type="button" onClick={() => onSave(project)}>Save</button>
+                <button type="button" onClick={handleSubmit}>Save</button>
                 <button type="button" onClick={onCancel}>Cancel</button>
             </ButtonContainer>
         </Container>

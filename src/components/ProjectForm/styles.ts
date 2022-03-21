@@ -68,3 +68,17 @@ export const ButtonContainer = styled.div`
        }
    }
 `
+export const ValidationCard = styled.div`
+   width: 100%;
+   height: 2.3rem;
+   background-color: #13171F;
+   color: var(--shape);
+   border-radius: 5px;
+
+
+   p {
+       padding: 10px;
+       font-weight: bold;
+       font-size: 0.85rem;
+   }
+`
