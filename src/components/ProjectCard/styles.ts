@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
    display: flex;
-   /* border: 1px solid black; */
    border: solid 1px var(--border);
    border-radius: 5px;
    width: 34vh;
@@ -48,16 +47,12 @@ export const ImageContainer = styled.div`
 `
 
 export const Title = styled.div`
-   /* border: 1px solid black; */
    p {
       font-size: 1.2rem;
       font-weight: bold;
    }
 `
 export const Content = styled.div`
-   /* border: 1px solid black; */
-
-
    p {
       color: var(--silver);
    }
