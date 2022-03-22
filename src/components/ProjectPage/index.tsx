@@ -13,11 +13,18 @@ export const ProjectPage = () => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const saveProject = (project: Project) => {
-        let updatedProjects = projects.map((pr: Project) => {
-            return pr.id === project.id ? project : pr
-        })
+        projectAPI
+            .put(project)
+            .then((updatedProject) => {
+                let updatedProjects = projects.map((pr: Project) => {
+                    return pr.id === project.id ? new Project(updatedProject) : pr
+                })
+                setProjects(updatedProjects)
+            })
+            .catch((err) => {
+                setError(err.message)
+            })
 
-        setProjects(updatedProjects)
     }
 
     useEffect(() => {

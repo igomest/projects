@@ -1,14 +1,16 @@
-const baseUrl = "http://localhost:4000";
-const url = `${baseUrl}/projects`;
+import { Project } from "./Project"
+
+const baseUrl = "http://localhost:4000"
+const url = `${baseUrl}/projects`
 
 const translateStatusToErrorMessage = (status: number) => {
     switch (status) {
         case 401:
-            return "Please login again.";
+            return "Please login again."
         case 403:
-            return "You do not have permission to view the project(s).";
+            return "You do not have permission to view the project(s)."
         default:
-            return "There was an error retrieving the project(s). Please try again.";
+            return "There was an error retrieving the project(s). Please try again."
     }
 }
 
@@ -21,15 +23,15 @@ const checkStatus = (response: any) => {
             statusText: response.statusText,
             url: response.url,
         };
-        console.log(`log server http error: ${JSON.stringify(httpErrorInfo)}`);
+        console.log(`log server http error: ${JSON.stringify(httpErrorInfo)}`)
 
-        let errorMessage = translateStatusToErrorMessage(httpErrorInfo.status);
-        throw new Error(errorMessage);
+        let errorMessage = translateStatusToErrorMessage(httpErrorInfo.status)
+        throw new Error(errorMessage)
     }
 }
 
 const parseJSON = (response: Response) => {
-    return response.json();
+    return response.json()
 }
 
 
@@ -42,9 +44,28 @@ const projectAPI = {
                 console.log("log client error " + error);
                 throw new Error(
                     "There was an error retrieving the projects. Please try again."
-                );
-            });
+                )
+            })
     },
-};
+
+    put(project: Project) {
+        return fetch(`${url}/${project.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(project),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .catch((error: TypeError) => {
+            console.log('log client error ' + error)
+            throw new Error (
+                'There was an error updating the project. Please try again.'
+            )
+        })
+    }
+}
+
 
 export { projectAPI }
