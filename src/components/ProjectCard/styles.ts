@@ -22,15 +22,11 @@ export const Container = styled.div`
    button {
       border-radius: 5px;
       border: none;
-      width: 30%;
-      height: 8%;
+      width: 4.5rem;
+      height: 2rem;
       margin-top: 10px;
       background-color: var(--blue);
       color: var(--shape);
-
-      &:hover {
-           filter: brightness(0.9)
-       }
    }
 `
 

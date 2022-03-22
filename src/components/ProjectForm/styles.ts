@@ -62,10 +62,6 @@ export const ButtonContainer = styled.div`
        border-radius: 5px;
        color: var(--shape);
        margin-top: 1rem;
-
-       &:hover {
-           filter: brightness(0.9)
-       }
    }
 `
 export const ValidationCard = styled.div`

@@ -1,5 +1,5 @@
 import { Container } from "./styles"
-import loading from "./loading.svg"
+import loading from "../../icons/loading.svg"
 
 export const Loading = () => {
     return (

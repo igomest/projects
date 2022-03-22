@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { Loading } from "../Loading"
 import { ProjectList } from "../ProjectList"
 import { Container } from "../ProjectList/styles"
-import { MOCK_PROJECTS } from "./MockProjects"
 import { Project } from "./Project"
 import { projectAPI } from "./projectAPI"
+import { MoreContainer } from "./style"
 
 export const ProjectPage = () => {
     const [projects, setProjects] = useState<Project[]>([])
@@ -57,7 +57,7 @@ export const ProjectPage = () => {
             />
 
             {error && (
-                <div>
+                <div className="teste">
                     <section>
                         <p>
                             {error}
@@ -67,11 +67,14 @@ export const ProjectPage = () => {
             )}
 
             {!loading && !error && (
-                <div>
-                    <div>
-                        <button type="button" onClick={handleMoreClick}>More...</button>
-                    </div>
-                </div>
+                <MoreContainer>
+                    <button
+                        type="button"
+                        onClick={handleMoreClick}
+                    >
+                        <strong>More...</strong>
+                    </button>
+                </MoreContainer>
             )}
 
             {loading && (
