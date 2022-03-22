@@ -23,7 +23,15 @@ export const ProjectCard = ({ project, onEdit }: ProjectCardProps) => {
             </Content>
 
             <Budget>
-                <p>Orçamento: {project.budget}</p>
+                <p>Budget:</p>
+                <strong>
+                    <p className="budget">
+                        {new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD'
+                        }).format(project.budget)}
+                    </p>
+                </strong>
             </Budget>
 
             <Separator />

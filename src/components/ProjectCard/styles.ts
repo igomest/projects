@@ -54,10 +54,17 @@ export const Content = styled.div`
    }
 `
 export const Budget = styled.div`
-
+   display: flex;
+   margin-top: 5px;
+   
    p {
+     font-weight: bold;
+     font-size: 0.97rem;
+   }
+
+   .budget {
       color: var(--silver);
-      font-size: 1rem;
+      font-size: 0.96rem;
    }
 `
 export const Separator = styled.hr`
