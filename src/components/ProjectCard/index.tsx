@@ -1,11 +1,10 @@
 import { ProjectCardProps } from "../../interfaces/propTypes"
 import { Budget, Container, Content, ImageContainer, Separator, Title } from "./styles"
-import { Project } from "../ProjectPage/Project"
+
 
 export const ProjectCard = ({ project, onEdit }: ProjectCardProps) => {
-
-    const handleEditClick = (projectBeingEdited: Project) => {
-        onEdit(projectBeingEdited)
+    const handleEditClick = (event: any) => {
+        onEdit(event)
     }
 
     return (

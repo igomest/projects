@@ -2,8 +2,11 @@ import { ButtonContainer, Container, ValidationCard } from "./styles"
 import { ProjectFormProps } from "../../interfaces/propTypes"
 import { SyntheticEvent, useState } from "react"
 import { Project } from "../ProjectPage/Project"
+import { useProjects } from "../../hooks/useProjects"
 
-export const ProjectForm = ({ onCancel, onSave, project: initialProject }: ProjectFormProps) => {
+export const ProjectForm = ({ onCancel, project: initialProject }: ProjectFormProps) => {
+    const { saveProject } = useProjects()
+
     const [project, setProject] = useState(initialProject)
     const [errors, setErrors] = useState({
         name: '',
@@ -14,7 +17,7 @@ export const ProjectForm = ({ onCancel, onSave, project: initialProject }: Proje
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault()
         if (!isValid()) return;
-        onSave(project)
+        saveProject(project)
     }
 
     const handleChange = (event: any) => {

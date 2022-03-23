@@ -1,15 +1,16 @@
 import { useState } from "react"
-import { ProjectListProps } from "../../interfaces/propTypes"
 import { ProjectCard } from "../ProjectCard"
 import { ProjectForm } from "../ProjectForm"
 import { Container } from "./styles"
-import { Project } from "../ProjectPage/Project"
+import { useProjects } from "../../hooks/useProjects"
 
-export const ProjectList = ({ projects, onSave }: ProjectListProps) => {
+export const ProjectList = () => {
+    const { projects } = useProjects()
+
     const [projectBeingEdited, setProjectBeingEdited] = useState({})
 
-    const handleEdit = (project: Project) => {
-        setProjectBeingEdited(project)
+    const handleEdit = (projects: any) => {
+        setProjectBeingEdited(projects)
     }
 
     const cancelEditing = () => {
@@ -24,7 +25,6 @@ export const ProjectList = ({ projects, onSave }: ProjectListProps) => {
                     {project === projectBeingEdited ? (
                         <ProjectForm
                             onCancel={cancelEditing}
-                            onSave={onSave}
                             project={project}
                         />
                     ) : (
