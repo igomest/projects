@@ -22,7 +22,7 @@
 ##### Primeira etapa
 - [NodeJS guia de instalação](https://nodejs.org/en/download/package-manager/ "Instalação")
 - [Homebrew para mac](https://brew.sh/index_pt-br "Instalação")
-- [ReactJs ](https://reactjs.org/docs/add-react-to-a-new-app.html "Instalação")
+- [ReactJs ](https://reactjs.org/docs/create-a-new-react-app.html "Instalação")
 - [Yarn ](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable")
 
 
