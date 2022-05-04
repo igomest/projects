@@ -60,6 +60,6 @@ $ npm run api
 ```
 
 ##### Imagens
-![projects](https://user-images.githubusercontent.com/85263053/159764222-a0fea14f-070d-4136-8174-d462082ee574.png)
+![challenge](https://user-images.githubusercontent.com/85263053/166690325-cd394e89-73b9-432b-9244-26357e3a2e35.png)
 
 
